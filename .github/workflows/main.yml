@@ -1,36 +1,50 @@
 pipeline {
     agent any
-    
-       stage("Build") {
-      
 
+    stages {
+        stage('Checkout') {
             steps {
-                echo 'Building...'
-                
-                }
+                checkout scm
+            }
+        }
+
+        stage('Build and Test in Docker') {
+            environment {
+                JAVA_VERSION = '21'
+                MAVEN_VERSION = '3.8.1'
             }
 
-    
-
-        stage("Test") {
-      
-
             steps {
-                echo 'Testing...'
-                clean test -Dcucumber.features=src/test/resources/features -Dcucumber.glue=bdd.automation.api.steps -Dtest=bdd.automation.api.runners.CucumberTestRunner
+                script {
+                    docker.image("adoptopenjdk:${JAVA_VERSION}-jdk-hotspot").withRun { c ->
+                        checkout scm
+
+                        sh "wget https://apache.osuosl.org/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz"
+                        sh "tar xf apache-maven-${MAVEN_VERSION}-bin.tar.gz"
+                        sh "export PATH=${pwd()}/apache-maven-${MAVEN_VERSION}/bin:\$PATH"
+
+                        // Construa e teste o projeto Maven
+                        sh "clean test -Dcucumber.features=src/test/resources/features -Dcucumber.glue=bdd.automation.api.steps -Dtest=bdd.automation.api.runners.CucumberTestRunner
 
 
 
 
-
-                
+"
+                    }
                 }
             }
-        
-    
+        }
+
+        // Adicione mais estágios conforme necessário
+    }
+
+    post {
+        success {
+            echo 'Build e testes passaram! Implementação bem-sucedida.'
+        }
+
+        failure {
+            echo 'O pipeline falhou. Verifique os resultados do build e dos testes.'
+        }
+    }
 }
-
-       
-    
-
-   
