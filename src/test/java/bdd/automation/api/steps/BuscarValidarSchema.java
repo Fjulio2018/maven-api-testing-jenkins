@@ -57,6 +57,7 @@ public class BuscarValidarSchema {
     public void valido_o_schema() {
         System.out.println("Entao 2");
         ValidacaoApi.validarEsquema("esquema1");
+        ValidacaoApi.validarEsquema("esqError");
 
     }
 }

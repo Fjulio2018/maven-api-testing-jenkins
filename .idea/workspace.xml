@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="71739b92-8b9e-407c-b461-f8079c05bc22" name="Changes" comment="" />
+    <list default="true" id="71739b92-8b9e-407c-b461-f8079c05bc22" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/test/java/bdd/automation/api/steps/BuscarValidarSchema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/bdd/automation/api/steps/BuscarValidarSchema.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
