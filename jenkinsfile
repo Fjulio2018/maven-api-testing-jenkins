@@ -5,7 +5,7 @@ pipeline {
             steps {
                 script {
                     echo 'Building...'
-                    bat 'mvn clean package -DskipTests=true'
+                    echo '1234
                 }
             }
         }
