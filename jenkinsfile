@@ -5,7 +5,7 @@ pipeline {
             steps {
                 script {
                     echo 'Building...'
-                    echo 'mvn clean test "-Dcucumber.features=src/test/resources/features" "-Dcucumber.glue=bdd.automation.api.steps" "-Dtest=bdd.automation.api.runners.CucumberTestRunner"'
+                    bat 'mvn clean test "-Dcucumber.features=src/test/resources/features" "-Dcucumber.glue=bdd.automation.api.steps" "-Dtest=bdd.automation.api.runners.CucumberTestRunner"'
                 }
             }
         }
