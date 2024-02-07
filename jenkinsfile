@@ -1,0 +1,40 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                script {
+                    echo 'Building...'
+                    // Adicione aqui os comandos necessários para construir o seu projeto
+                    // Exemplo: mvn clean install
+                }
+            }
+        }
+        stage('Test') {
+            steps {
+                script {
+                    echo 'Testing...'
+                    // Adicione aqui os comandos necessários para executar os testes do seu projeto
+                    // Exemplo: mvn test
+                }
+            }
+        }
+        stage('Final') {
+            steps {
+                script {
+                    echo 'Finishing...'
+                    // Adicione aqui os comandos necessários para finalizar o seu projeto
+                    // Exemplo: mvn clean package
+                }
+            }
+        }
+    }
+    post {
+        success {
+            echo 'Build e testes passaram! Implementação bem-sucedida.'
+        }
+        failure {
+            echo 'O pipeline falhou. Verifique os resultados do build e dos testes.'
+        }
+    }
+}
