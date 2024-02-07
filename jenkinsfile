@@ -5,7 +5,7 @@ pipeline {
             steps {
                 script {
                     echo 'Building...'
-                    bat 'clean test -Dcucumber.features=src/test/resources/features -Dcucumber.glue=bdd.automation.api.steps -Dtest=bdd.automation.api.runners.CucumberTestRunner
+                    echo '8910'
 
 
 
