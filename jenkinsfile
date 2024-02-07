@@ -5,8 +5,8 @@ pipeline {
             steps {
                 script {
                     echo 'Building...'
-                    // Adicione aqui os comandos necessários para construir o seu projeto
-                    // Exemplo: mvn clean install
+                    bat 'mvn clean package -DskipTests=true'
+
                 }
             }
         }
